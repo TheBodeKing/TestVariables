@@ -1,7 +1,9 @@
-import { getEmailJsKey } from "../utils/config";
+import { getEmailJsKey, getTokenLocal, getTokenVercel } from "../utils/config";
 
 const A = ({ forRef }) => {
   const email = getEmailJsKey();
+  const local = getTokenLocal();
+  const vercel = getTokenVercel();
 
   return (
     <div className="w-full h-[100px] flex relative justify-center items-center bg-gray-400">
@@ -12,6 +14,8 @@ const A = ({ forRef }) => {
         className="w-[50px] flex h-[50px] bg-black text-white justify-center items-center"
         onClick={() => {
           console.log(email);
+          console.log(local);
+          console.log(vercel);
         }}
       >
         A
