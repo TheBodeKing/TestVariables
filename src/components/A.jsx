@@ -1,9 +1,15 @@
-import { getEmailJsKey, getTokenLocal, getTokenVercel } from "../utils/config";
+import {
+  getEmailJsKey,
+  getTokenLocal,
+  getTokenVercel,
+  getTokenVercelEnv,
+} from "../utils/config";
 
 const A = ({ forRef }) => {
   const email = getEmailJsKey();
   const local = getTokenLocal();
   const vercel = getTokenVercel();
+  const env = getTokenVercelEnv();
 
   return (
     <div className="w-full h-[100px] flex relative justify-center items-center bg-gray-400">
@@ -16,6 +22,7 @@ const A = ({ forRef }) => {
           console.log(email);
           console.log(local);
           console.log(vercel);
+          console.log(env);
         }}
       >
         A
