@@ -12,11 +12,11 @@ export const getTokenLocal = async () => {
 
   try {
     const res = await fetch("/api/getTestKey");
-    if (!res.ok) throw new Error("API error");
     const data = await res.json();
-    if (data.key) return data.key;
+    return data.key;
   } catch (err) {
-    console.error("Fetch attempt failed:", err);
+    console.error("Failed to get key from API:", err);
+    return null;
   }
 };
 
