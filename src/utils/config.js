@@ -6,8 +6,18 @@ export const getEmailJsKey = () => {
   );
 };
 
-export const getTokenLocal = () => {
-  return import.meta.env.VITE_LOCAL_TOKEN;
+export const getTokenLocal = async () => {
+  const localToken = import.meta.env.VITE_LOCAL_TOKEN;
+  if (localToken) return localToken;
+
+  try {
+    const res = await fetch("/api/getTestKey");
+    if (!res.ok) throw new Error("API error");
+    const data = await res.json();
+    if (data.key) return data.key;
+  } catch (err) {
+    console.error("Fetch attempt failed:", err);
+  }
 };
 
 export const getTokenVercel = () => {

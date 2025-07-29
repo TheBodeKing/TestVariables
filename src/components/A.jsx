@@ -1,14 +1,6 @@
-const A = ({ forRef }) => {
-  const getKey = async () => {
-    try {
-      const res = await fetch("/api/getTestKey");
-      const data = await res.json();
-      console.log("Key from Vercel:", data.key);
-    } catch (err) {
-      console.error("Error fetching key:", err);
-    }
-  };
+import { getTokenLocal } from "../utils/config";
 
+const A = ({ forRef }) => {
   return (
     <div className="w-full h-[100px] flex relative justify-center items-center bg-gray-400">
       <div
@@ -16,8 +8,8 @@ const A = ({ forRef }) => {
           forRef.current["A"] = el;
         }}
         className="w-[50px] flex h-[50px] bg-black text-white justify-center items-center"
-        onClick={() => {
-          getKey();
+        onClick={async () => {
+          console.log(await getTokenLocal());
         }}
       >
         A
